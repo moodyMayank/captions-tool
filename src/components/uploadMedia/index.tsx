@@ -30,7 +30,7 @@ const UploadMedia = () => {
       {videoUrl.length === 0 && (
         <label
           htmlFor="video-upload"
-          className="w-full cursor-pointer border border-dotted h-60 rounded flex items-center justify-center hover:bg-slate-100"
+          className="w-full cursor-pointer border border-dotted h-40 rounded flex items-center justify-center hover:bg-slate-100"
         >
           Upload File
           <input

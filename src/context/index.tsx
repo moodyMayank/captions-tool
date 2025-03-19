@@ -4,9 +4,17 @@ interface fileContentProps {
   fileName: string;
   fileType: string;
 }
+
+export interface CaptionsProps {
+  start: string;
+  end: string;
+  captionText: string;
+}
 interface ProjectContextProps {
   videoUrl: string;
   sidebarItem: string;
+  captions: CaptionsProps[];
+  setCaptions: React.Dispatch<React.SetStateAction<CaptionsProps[]>>;
   videoFileContent: fileContentProps;
   setVideoFileContent: React.Dispatch<React.SetStateAction<fileContentProps>>;
   setVideoUrl: React.Dispatch<React.SetStateAction<string>>;
@@ -25,6 +33,7 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
     fileType: "",
   });
   const [sidebarItem, setSidebarItem] = useState<string>("video");
+  const [captions, setCaptions] = useState<CaptionsProps[]>([]);
 
   return (
     <ProjectContext.Provider
@@ -32,6 +41,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
         videoUrl,
         setVideoUrl,
         sidebarItem,
+        captions,
+        setCaptions,
         setSidebarItem,
         videoFileContent,
         setVideoFileContent,

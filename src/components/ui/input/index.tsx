@@ -21,7 +21,7 @@ const Input = ({
       onChange={onChange}
       value={value}
       className={
-        "w-full border active:border-purple-500 rounded p-2 text-lg my-4"
+        "w-full border active:border-purple-500 rounded p-2 text-lg my-2"
       }
     />
   );

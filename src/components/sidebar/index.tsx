@@ -40,14 +40,14 @@ const Sidebar = () => {
         <a
           href="#"
           className={`flex flex-col gap-y-2 items-center  rounded p-2 text-sm ${
-            sidebarItem === "sample"
+            sidebarItem === "samples"
               ? " bg-black text-white font-medium"
               : " hover:bg-slate-200"
           }`}
-          onClick={() => handleSidebarChange("sample")}
+          onClick={() => handleSidebarChange("samples")}
         >
           <Sample />
-          <span>Sample</span>
+          <span>Samples</span>
         </a>
       </nav>
     </div>

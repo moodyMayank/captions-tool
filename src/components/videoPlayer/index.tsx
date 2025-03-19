@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { generateVttFromCaptions } from "../../helpers";
-import { staticCaptions } from "../../constants";
 import VideoIcon from "../../assets/svg/video";
 import VideoPause from "../../assets/svg/videoPause";
 import SoundOff from "../../assets/svg/soundOff";
 import SoundOn from "../../assets/svg/soundOn";
+import { useMyContext } from "../../context";
 
 interface VideoPlayerProps {
   videoUrl: string;
@@ -17,6 +17,8 @@ const VideoPlayer = ({ videoUrl, className }: VideoPlayerProps) => {
   const [isMuted, setIsMuted] = useState<boolean>(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const { captions } = useMyContext();
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -39,14 +41,21 @@ const VideoPlayer = ({ videoUrl, className }: VideoPlayerProps) => {
     setIsMuted(video.muted);
   };
 
+  const handleVideoEnd = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      setIsVideoPlaying(false);
+    }
+  };
+
   useEffect(() => {
-    const vttString = generateVttFromCaptions(staticCaptions);
+    const vttString = generateVttFromCaptions(captions);
     const blob = new Blob([vttString], { type: "text/vtt" });
     const url = URL.createObjectURL(blob);
     setVttUrl(url);
 
     return () => URL.revokeObjectURL(url);
-  }, []);
+  }, [captions]);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -62,6 +71,7 @@ const VideoPlayer = ({ videoUrl, className }: VideoPlayerProps) => {
         <video
           className="w-full h-full object-cover shadow-[0_0_15px_4px_rgba(59,130,246,0.9)]"
           ref={videoRef}
+          onEnded={handleVideoEnd}
         >
           <source src={videoUrl} type="video/mp4" />
           {vttUrl && (

@@ -2,11 +2,10 @@ import VideoPlayer from "../../components/videoPlayer";
 import UploadMedia from "../../components/uploadMedia";
 import AddCaptions from "../../components/addCaptions";
 import { useMyContext } from "../../context";
+import Samples from "../../components/samples";
 
 const Homepage = () => {
   const { sidebarItem, videoUrl } = useMyContext();
-
-  console.log(">>>>>>> videoUrl", videoUrl);
 
   return (
     <main className="w-full flex h-full">
@@ -16,6 +15,9 @@ const Homepage = () => {
 
         {/* Subtitles section */}
         {sidebarItem === "captions" && <AddCaptions />}
+
+        {/* Sample Urls for testing*/}
+        {sidebarItem === "samples" && <Samples />}
       </div>
       <div className="w-[60%] bg-slate-100 h-full px-4">
         {/* Add dynamic video url here */}
