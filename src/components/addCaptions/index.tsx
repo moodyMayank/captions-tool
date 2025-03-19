@@ -6,7 +6,7 @@ const AddCaptions = () => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [text, setText] = useState("");
-  const [showCaptionForm, setShowCaptionForm] = useState(false);
+  const [showCaptionForm, setShowCaptionForm] = useState<boolean>(false);
 
   const { videoUrl, captions, setCaptions } = useMyContext();
 
@@ -16,6 +16,7 @@ const AddCaptions = () => {
     setStart("");
     setEnd("");
     setText("");
+    setShowCaptionForm(false);
   };
 
   return (
@@ -38,12 +39,14 @@ const AddCaptions = () => {
               value={start}
               onChange={(e) => setStart(e.target.value)}
               inputBoxName="start"
+              maxLength={14}
             />
             <Input
               placeholder="End (HH:MM:SS)"
               value={end}
               onChange={(e) => setEnd(e.target.value)}
               inputBoxName="end"
+              maxLength={14}
             />
           </div>
           <Input
@@ -51,6 +54,7 @@ const AddCaptions = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             inputBoxName="caption-box"
+            maxLength={50}
           />
           <button
             onClick={addCaption}
@@ -65,20 +69,13 @@ const AddCaptions = () => {
         {captions.length > 0 && (
           <div className="space-y-2 mt-4">
             <h3 className="font-semibold">Captions Preview:</h3>
-            <ul className="text-sm list-decimal pl-5">
+            <ul className="text-sm list-decimal">
               {captions?.map((cap, i) => (
-                <li key={i}>
+                <li key={i} className="truncate">
                   {cap.start} → {cap.end}: {cap.captionText}
                 </li>
               ))}
             </ul>
-
-            {/* <button
-              onClick={downloadVTT}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-            >
-              Download VTT
-            </button> */}
           </div>
         )}
       </div>

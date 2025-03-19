@@ -5,6 +5,7 @@ import VideoPause from "../../assets/svg/videoPause";
 import SoundOff from "../../assets/svg/soundOff";
 import SoundOn from "../../assets/svg/soundOn";
 import { useMyContext } from "../../context";
+import Toggle from "../ui/toggle";
 
 interface VideoPlayerProps {
   videoUrl: string;
@@ -15,6 +16,7 @@ const VideoPlayer = ({ videoUrl, className }: VideoPlayerProps) => {
   const [vttUrl, setVttUrl] = useState<string>("");
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [showVideoControls, setShowVideoControls] = useState<boolean>(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -72,6 +74,7 @@ const VideoPlayer = ({ videoUrl, className }: VideoPlayerProps) => {
           className="w-full h-full object-cover shadow-[0_0_15px_4px_rgba(59,130,246,0.9)]"
           ref={videoRef}
           onEnded={handleVideoEnd}
+          controls={showVideoControls}
         >
           <source src={videoUrl} type="video/mp4" />
           {vttUrl && (
@@ -104,6 +107,10 @@ const VideoPlayer = ({ videoUrl, className }: VideoPlayerProps) => {
         >
           {isMuted ? <SoundOff /> : <SoundOn />}
         </button>
+        <Toggle
+          toggleText="Controls"
+          handleOnChange={() => setShowVideoControls((prev) => !prev)}
+        />
       </div>
       {videoUrl.length === 0 && (
         <div className="text-xl font-bold text-red-600">

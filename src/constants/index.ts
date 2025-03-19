@@ -21,7 +21,7 @@ export const staticCaptions: CaptionsProps[] = [
 export const DEFAULT_VIDEO_URLS = [
   {
     id: 1,
-    name: "Video 1",
-    key: "https://media-hosting.imagekit.io//346878ac8b474f4b/Sample%20Interview.mov?Expires=1836930397&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rdkEc-KJE1u0NSysdtWF8~MIRxoNR6c8NeqVfeCpqgq6alvy-JblaCRWIP~mFHhqrAK6OJSKijOtX99faLNW3Lm0QMlvO1i0EMkQllvWWAw2-tfwlU8eI5GSZqq-FjjEIjibCtJD-W0JGUBEVAiKWyrnA4~k7swiKz9HsV9Mi7fz3om-MavIkNeqa0cMFrjM9ySmFj5nQ~k27slFz5ZpYaor7Lqj63slC2n9yA4f3YnoGYgqbRGvlz1BM9ko2gIkYN2uNzg97P3jlTYG2ySc8G3lK6jwzv9qHb5h-dEd0K4~xF9Fu2gHjCjQy-NrME7JDM-8zJ~zy~ORQQ1aXiPF5Q__",
+    name: "Sample Video 1",
+    key: "https://media-hosting.imagekit.io//6120905c51024e57/Sample%20Video%201.mov?Expires=1837016483&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=pvzI03h6mBFu6~mT8NKXO3TTRkMkWazsdFiIUFhwMNRYzpy6uxvUxaF2XECQsGmw2CMmBdz0vxq3az0GObaqbP5sLiYUmhnd3293yOPk~4ZNVXI7vgXDfwdyNCikBDTD7Yb9GrKa78JZ5WvuO6OKpaJF7O01SPcrSxujYPireV5BXSPnIofpduZ0WTFWlqa06KawjYXwIjTDhF-MPhXWEx90uYGANRp0XbuGo3hMuJoAGDItTcrIXnw8f64SLFyqKh~~LYlFQPxd7WmDDGin5Skgf~cUDTcrxPXdzjOc3OPRpGt~PitJjqow8j-cyIX~ROyGVnZG8X9D08cfV4zHzA__",
   },
 ];
