@@ -1,7 +1,9 @@
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-center w-full">
-      <h1 className="text-4xl font-bold my-4">Video Captionator Tool</h1>
+    <nav className="flex items-center justify-start w-full my-6">
+      <h1 className="text-5xl font-extrabold text-purple-500 text-center">
+        Video Subtitle Studio
+      </h1>
     </nav>
   );
 };

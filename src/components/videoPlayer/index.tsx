@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { generateVttFromCaptions } from "../../helpers";
 import { staticCaptions } from "../../constants";
+import VideoIcon from "../../assets/svg/video";
+import VideoPause from "../../assets/svg/videoPause";
 
 interface VideoPlayerProps {
   videoUrl: string;
@@ -15,7 +17,9 @@ const VideoPlayer = ({
   width,
   height,
 }: VideoPlayerProps) => {
-  const [vttUrl, setVttUrl] = useState("");
+  const [vttUrl, setVttUrl] = useState<string>("");
+  const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+
   useEffect(() => {
     const vttString = generateVttFromCaptions(staticCaptions);
     const blob = new Blob([vttString], { type: "text/vtt" });
@@ -25,29 +29,37 @@ const VideoPlayer = ({
     return () => URL.revokeObjectURL(url);
   }, []);
 
+  const togglePlay = () => {
+    setIsVideoPlaying((prev) => !prev);
+  };
+
   return (
     <div
       style={{ width, height }}
-      className={`relative overflow-hidden ${className}`}
+      className={`overflow-hidden w-full mx-auto ${className}`}
     >
-      <video className="w-full h-full object-cover rounded" controls>
-        <source src={videoUrl} type="video/mp4" />
-        {vttUrl && (
-          <track
-            label="English"
-            kind="subtitles"
-            srcLang="en"
-            src={vttUrl}
-            default
-          />
-        )}
-        Your browser does not support the video tag.
-      </video>
+      <div className="">
+        <video controls className="w-full h-full object-cover">
+          <source src={videoUrl} type="video/mp4" />
+          {vttUrl && (
+            <track
+              label="English"
+              kind="subtitles"
+              srcLang="en"
+              src={vttUrl}
+              default
+            />
+          )}
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div
         id="controls-bar"
-        className="absolute bottom-[-2] w-full bg-amber-200 bg-opacity-80 p-2 text-center"
+        className="mt-2 w-full bg-opacity-80 p-2 text-center flex items-center justify-center"
       >
-        hello
+        <button onClick={() => togglePlay()}>
+          {isVideoPlaying ? <VideoPause /> : <VideoIcon />}
+        </button>
       </div>
     </div>
   );

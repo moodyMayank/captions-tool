@@ -1,4 +1,4 @@
-import { staticCaptionsTypes } from "../constants";
+import { captionsTypes } from "../constants";
 
 export const formatTime = (time: string) => {
   const sec = parseFloat(time);
@@ -7,7 +7,7 @@ export const formatTime = (time: string) => {
   return `00:${String(minutes).padStart(2, "0")}:${seconds}`;
 };
 
-export const generateVttFromCaptions = (captions: staticCaptionsTypes[]) => {
+export const generateVttFromCaptions = (captions: captionsTypes[]) => {
   let vttContent = "WEBVTT\n\n";
   captions.forEach((cap, i) => {
     vttContent += `${i + 1}\n`;
