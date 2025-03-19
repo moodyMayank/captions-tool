@@ -5,7 +5,7 @@ import Homepage from "./pages/homepage";
 
 function App() {
   return (
-    <div className="flex h-screen overflow-hidden fixed w-screen">
+    <div className="flex h-screen overflow-hidden w-screen">
       <Sidebar />
       <MaxWidthWrapper>
         <Navbar />

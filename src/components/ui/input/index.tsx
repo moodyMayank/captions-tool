@@ -2,7 +2,8 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   inputBoxName: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  value: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 const Input = ({
@@ -10,6 +11,7 @@ const Input = ({
   type = "text",
   inputBoxName,
   onChange,
+  value,
 }: InputProps) => {
   return (
     <input
@@ -17,7 +19,10 @@ const Input = ({
       type={type}
       name={inputBoxName}
       onChange={onChange}
-      className={"w-full border border-amber-500 rounded p-4 text-lg my-4"}
+      value={value}
+      className={
+        "w-full border active:border-purple-500 rounded p-2 text-lg my-4"
+      }
     />
   );
 };
